@@ -13,7 +13,7 @@ class NetworkDataSourceImpl(
 
     override suspend fun getGoalLogs(goalId: Int , lastFetchedLogId: Int?): ApiResponse<List<GoalLogResponse>> {
         println("🌐 NetworkDataSource: Fetching goal logs for goalId: $goalId, lastFetchedLogId: $lastFetchedLogId")
-        return httpClient.safeApiCall("/api/v1/goallog", HttpMethod.Get) {
+        return httpClient.safeApiCall("/api/v2/goallog", HttpMethod.Get) {
             url {
                 parameters.append("goal_id", goalId.toString())
                 lastFetchedLogId?.let { parameters.append("last_fetched_log_count", it.toString()) }
